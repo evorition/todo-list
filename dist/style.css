@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* project form */
+#project-form-container {
+  display: none;
+}
+
+/* task Form */
+#open-task-form {
+  display: none;
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+}
+
+#close-task-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#task-form-container {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+  display: block;
+}

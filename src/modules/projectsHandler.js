@@ -1,41 +1,37 @@
+import { publish } from "./mediator";
 import Project from "./Project";
 
 const projects = [];
 let selectedProject = null;
 
-function projectExist(name) {
-  return projects.some((project) => project.name === name);
+function selectProject(projectIndex) {
+  selectedProject = projects[projectIndex];
+  publish("render-project-tasks", selectedProject.tasks);
 }
 
-function projectIndex(name) {
-  return projects.findIndex((project) => project.name === name);
+function addProject(projectName) {
+  const project = new Project(projectName);
+  projects.push(project);
+  publish("render-projects", projects);
+  selectProject(projects.length - 1);
 }
 
-function selectProject(name) {
-  if (projectExist(name)) {
-    selectedProject = projects[projectIndex(name)];
+function removeProject(projectIndex) {
+  if (projects.findIndex((_, index) => index === projectIndex) !== -1) {
+    publish("clear-project-tasks");
   }
+  projects.splice(projectIndex, 1);
+  publish("render-projects", projects);
 }
 
-function getSelectedProject() {
-  return selectProject;
+function addTask(title, description, dueDate, priority) {
+  selectedProject.addTask(title, description, dueDate, priority);
+  publish("render-project-tasks", selectedProject.tasks);
 }
 
-function addProject(name) {
-  if (name !== "" && !projectExist(name)) {
-    const project = new Project(name);
-    projects.push(project);
-  }
+function removeTask(taskIndex) {
+  selectedProject.removeTask(taskIndex);
+  publish("render-project-tasks", selectedProject.tasks);
 }
 
-function removeProject(name) {
-  if (projectExist(name)) {
-    if (name === getSelectedProject(name)) {
-      selectedProject = null;
-    }
-
-    projects.splice(projectIndex(name), 1);
-  }
-}
-
-export { addProject, removeProject, selectProject, getSelectedProject };
+export { selectProject, addProject, removeProject, addTask, removeTask };

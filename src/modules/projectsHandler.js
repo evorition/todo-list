@@ -33,6 +33,11 @@ function getTask(taskIndex) {
   return selectedProject.tasks[taskIndex];
 }
 
+function expandTask(taskIndex) {
+  const task = selectedProject.tasks[taskIndex];
+  publish("render-task-details", task);
+}
+
 function updateTask(taskIndex, title, description, dueDate, priority) {
   selectedProject.updateTask(taskIndex, title, description, dueDate, priority);
   publish("render-project-tasks", selectedProject.tasks);
@@ -50,5 +55,6 @@ export {
   addTask,
   removeTask,
   getTask,
+  expandTask,
   updateTask,
 };

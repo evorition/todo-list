@@ -1,5 +1,10 @@
 import { publish } from "./mediator";
-import { selectProject, removeProject } from "./projectsHandler";
+import {
+  selectProject,
+  removeProject,
+  expandTask,
+  removeTask,
+} from "./projectsHandler";
 
 function projectDynamicListeners() {
   const projectNames = document.querySelectorAll(".project-name");
@@ -22,8 +27,16 @@ function taskDynamicListeners() {
   const completeTaskCheckBoxes = document.querySelectorAll(".complete-task");
   const editTaskButtons = document.querySelectorAll(".edit-task");
 
-  // taskItems.forEach();
-  // completeTaskCheckBoxes.forEach();
+  taskItems.forEach((taskItem, taskIndex) => {
+    taskItem.addEventListener("click", () => {
+      expandTask(taskIndex);
+    });
+  });
+  completeTaskCheckBoxes.forEach((completeTaskCheckBox, taskIndex) => {
+    completeTaskCheckBox.addEventListener("change", () => {
+      removeTask(taskIndex);
+    });
+  });
   editTaskButtons.forEach((editTaskButton, taskIndex) => {
     editTaskButton.addEventListener("click", () => {
       publish("open-task-form", taskIndex);

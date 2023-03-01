@@ -1,4 +1,4 @@
-import initializeStaticListeners from "./modules/staticEventListeners";
+import initializeStaticListeners from "./modules/formsController";
 import initializeDisplayController from "./modules/displayController";
 
 initializeDisplayController();

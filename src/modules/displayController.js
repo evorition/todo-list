@@ -88,6 +88,29 @@ function renderProjectTasks(tasks) {
   taskDynamicListeners();
 }
 
+const taskDetails = document.getElementById("task-details");
+const closeTaskDetailsButton = document.getElementById("close-task-details");
+
+function closeTaskDetails() {
+  taskDetails.style.display = "none";
+}
+
+function renderDetailedProjectTask(task) {
+  taskDetails.style.display = "block";
+
+  const taskTitle = document.getElementById("task-title");
+  const taskDescription = document.getElementById("task-description");
+  const taskDueDate = document.getElementById("task-due-date");
+  const taskPriority = document.getElementById("task-priority");
+
+  taskTitle.textContent = task.title;
+  taskDescription.textContent = task.description;
+  taskDueDate.textContent = task.dueDate;
+  taskPriority.textContent = task.priority;
+}
+
+closeTaskDetailsButton.addEventListener("click", closeTaskDetails);
+
 export default function initializeDisplayController() {
   subscribe("render-projects", (projects) => {
     renderProjects(projects);
@@ -97,5 +120,8 @@ export default function initializeDisplayController() {
   });
   subscribe("render-project-tasks", (tasks) => {
     renderProjectTasks(tasks);
+  });
+  subscribe("render-task-details", (task) => {
+    renderDetailedProjectTask(task);
   });
 }

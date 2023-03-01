@@ -29,9 +29,26 @@ function addTask(title, description, dueDate, priority) {
   publish("render-project-tasks", selectedProject.tasks);
 }
 
+function getTask(taskIndex) {
+  return selectedProject.tasks[taskIndex];
+}
+
+function updateTask(taskIndex, title, description, dueDate, priority) {
+  selectedProject.updateTask(taskIndex, title, description, dueDate, priority);
+  publish("render-project-tasks", selectedProject.tasks);
+}
+
 function removeTask(taskIndex) {
   selectedProject.removeTask(taskIndex);
   publish("render-project-tasks", selectedProject.tasks);
 }
 
-export { selectProject, addProject, removeProject, addTask, removeTask };
+export {
+  selectProject,
+  addProject,
+  removeProject,
+  addTask,
+  removeTask,
+  getTask,
+  updateTask,
+};

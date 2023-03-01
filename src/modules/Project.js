@@ -16,4 +16,13 @@ export default class Project {
       this.tasks.splice(taskIndex, 1);
     }
   }
+
+  updateTask(taskIndex, title, description, dueDate, priority) {
+    const task = this.tasks[taskIndex];
+
+    task.title = title;
+    task.description = description;
+    task.dueDate = dueDate;
+    task.priority = priority;
+  }
 }

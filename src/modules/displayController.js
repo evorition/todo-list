@@ -49,16 +49,39 @@ function renderProjectTasks(tasks) {
     const taskTitle = document.createElement("span");
     const taskDueDate = document.createElement("span");
     const taskPriority = document.createElement("span");
+    const completeTaskCheckBox = document.createElement("input");
+    const editTaskButton = document.createElement("span");
+
+    switch (task.priority) {
+      case "low":
+        taskItem.classList.add("low-priority");
+        break;
+      case "medium":
+        taskItem.classList.add("medium-priority");
+        break;
+      case "high":
+        taskItem.classList.add("high-priority");
+        break;
+      default:
+        break;
+    }
 
     taskItem.classList.add("task-item");
+    completeTaskCheckBox.classList.add("complete-task");
+    editTaskButton.classList.add("edit-task");
+
+    completeTaskCheckBox.setAttribute("type", "checkbox");
 
     taskTitle.textContent = task.title;
     taskDueDate.textContent = task.dueDate;
     taskPriority.textContent = task.priority;
 
-    taskItem.appendChild(taskPriority);
+    editTaskButton.textContent = "Edit";
+
+    taskItem.appendChild(completeTaskCheckBox);
+    taskItem.appendChild(taskTitle);
+    taskItem.appendChild(editTaskButton);
     taskItem.appendChild(taskDueDate);
-    taskItem.appendChild(taskPriority);
     tasksList.appendChild(taskItem);
   });
 

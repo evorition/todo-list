@@ -1,3 +1,4 @@
+import { publish } from "./mediator";
 import { selectProject, removeProject } from "./projectsHandler";
 
 function projectDynamicListeners() {
@@ -17,7 +18,17 @@ function projectDynamicListeners() {
 }
 
 function taskDynamicListeners() {
-  //
+  const taskItems = document.querySelectorAll(".task-item");
+  const completeTaskCheckBoxes = document.querySelectorAll(".complete-task");
+  const editTaskButtons = document.querySelectorAll(".edit-task");
+
+  // taskItems.forEach();
+  // completeTaskCheckBoxes.forEach();
+  editTaskButtons.forEach((editTaskButton, taskIndex) => {
+    editTaskButton.addEventListener("click", () => {
+      publish("open-task-form", taskIndex);
+    });
+  });
 }
 
 export { projectDynamicListeners, taskDynamicListeners };

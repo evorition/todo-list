@@ -14,9 +14,9 @@
   </head>
   <body>
     <div id="task-form-container">
-      <div id="close-task-form">
+      <div id="task-form-header">
         <h3>Add new task</h3>
-        <span class="material-symbols-rounded">close</span>
+        <span id="close-task-form" class="material-symbols-rounded">close</span>
       </div>
       <form id="task-form" action="" method="post">
         <div>
@@ -51,6 +51,17 @@
 
         <button id="submit-task-button" type="submit">Submit</button>
       </form>
+    </div>
+    <div id="task-details">
+      <div id="task-details-header">
+        <h1 id="task-title"></h1>
+        <span id="close-task-details" class="material-symbols-rounded"
+          >close</span
+        >
+      </div>
+      <p id="task-description"></p>
+      <p id="task-due-date"></p>
+      <p id="task-priority"></p>
     </div>
     <div id="main">
       <nav>

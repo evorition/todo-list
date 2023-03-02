@@ -23,12 +23,12 @@ function projectDynamicListeners() {
 }
 
 function taskDynamicListeners() {
-  const taskItems = document.querySelectorAll(".task-item");
+  const tasksDetailsButton = document.querySelectorAll(".task-details");
   const completeTaskCheckBoxes = document.querySelectorAll(".complete-task");
   const editTaskButtons = document.querySelectorAll(".edit-task");
 
-  taskItems.forEach((taskItem, taskIndex) => {
-    taskItem.addEventListener("click", () => {
+  tasksDetailsButton.forEach((taskDetailsButton, taskIndex) => {
+    taskDetailsButton.addEventListener("click", () => {
       expandTask(taskIndex);
     });
   });

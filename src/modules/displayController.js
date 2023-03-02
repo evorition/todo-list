@@ -46,10 +46,11 @@ function renderProjectTasks(tasks) {
 
   tasks.forEach((task) => {
     const taskItem = document.createElement("li");
+    const completeTaskCheckBox = document.createElement("input");
+    const taskDetails = document.createElement("span");
     const taskTitle = document.createElement("span");
     const taskDueDate = document.createElement("span");
-    const taskPriority = document.createElement("span");
-    const completeTaskCheckBox = document.createElement("input");
+
     const editTaskButton = document.createElement("span");
 
     switch (task.priority) {
@@ -67,21 +68,23 @@ function renderProjectTasks(tasks) {
     }
 
     taskItem.classList.add("task-item");
-    completeTaskCheckBox.classList.add("complete-task");
-    editTaskButton.classList.add("edit-task");
 
+    completeTaskCheckBox.classList.add("complete-task");
     completeTaskCheckBox.setAttribute("type", "checkbox");
+
+    taskDetails.classList.add("task-details");
+
+    editTaskButton.classList.add("edit-task");
+    editTaskButton.textContent = "Edit";
 
     taskTitle.textContent = task.title;
     taskDueDate.textContent = task.dueDate;
-    taskPriority.textContent = task.priority;
-
-    editTaskButton.textContent = "Edit";
 
     taskItem.appendChild(completeTaskCheckBox);
-    taskItem.appendChild(taskTitle);
+    taskDetails.appendChild(taskTitle);
+    taskDetails.appendChild(taskDueDate);
+    taskItem.appendChild(taskDetails);
     taskItem.appendChild(editTaskButton);
-    taskItem.appendChild(taskDueDate);
     tasksList.appendChild(taskItem);
   });
 

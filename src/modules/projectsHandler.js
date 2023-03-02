@@ -22,6 +22,10 @@ function selectProject(projectIndex) {
 }
 
 function addProject(projectName) {
+  if (projects.findIndex((project) => project.name === projectName) !== -1) {
+    return;
+  }
+
   const project = new Project(projectName);
   projects.push(project);
   localStorage.setItem("projects", JSON.stringify(projects));

@@ -1,8 +1,20 @@
 import { publish } from "./mediator";
 import Project from "./Project";
 
-const projects = [];
+const projects = localStorage.getItem("projects")
+  ? JSON.parse(localStorage.getItem("projects"))
+  : [];
 let selectedProject = null;
+
+function initializeProjects() {
+  if (projects.length) {
+    projects.forEach((project, projectIndex) => {
+      const projectInstance = new Project();
+      projects[projectIndex] = Object.assign(projectInstance, project);
+    });
+    publish("render-projects", projects);
+  }
+}
 
 function selectProject(projectIndex) {
   selectedProject = projects[projectIndex];
@@ -12,6 +24,7 @@ function selectProject(projectIndex) {
 function addProject(projectName) {
   const project = new Project(projectName);
   projects.push(project);
+  localStorage.setItem("projects", JSON.stringify(projects));
   publish("render-projects", projects);
   selectProject(projects.length - 1);
 }
@@ -21,11 +34,13 @@ function removeProject(projectIndex) {
     publish("clear-project-tasks");
   }
   projects.splice(projectIndex, 1);
+  localStorage.setItem("projects", JSON.stringify(projects));
   publish("render-projects", projects);
 }
 
 function addTask(title, description, dueDate, priority) {
   selectedProject.addTask(title, description, dueDate, priority);
+  localStorage.setItem("projects", JSON.stringify(projects));
   publish("render-project-tasks", selectedProject.tasks);
 }
 
@@ -40,15 +55,18 @@ function expandTask(taskIndex) {
 
 function updateTask(taskIndex, title, description, dueDate, priority) {
   selectedProject.updateTask(taskIndex, title, description, dueDate, priority);
+  localStorage.setItem("projects", JSON.stringify(projects));
   publish("render-project-tasks", selectedProject.tasks);
 }
 
 function removeTask(taskIndex) {
   selectedProject.removeTask(taskIndex);
+  localStorage.setItem("projects", JSON.stringify(projects));
   publish("render-project-tasks", selectedProject.tasks);
 }
 
 export {
+  initializeProjects,
   selectProject,
   addProject,
   removeProject,

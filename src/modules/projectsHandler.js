@@ -19,6 +19,7 @@ function initializeProjects() {
 function selectProject(projectIndex) {
   selectedProject = projects[projectIndex];
   publish("render-project-tasks", selectedProject.tasks);
+  publish("highlight-selected-project", projectIndex);
 }
 
 function addProject(projectName) {

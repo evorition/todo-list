@@ -7,6 +7,10 @@ import {
 // Project
 const projectsList = document.getElementById("projects-list");
 
+function highlightSelectedProject(projectIndex) {
+  projectsList.childNodes[projectIndex].classList.add("selected");
+}
+
 function renderProjects(projects) {
   projectsList.innerHTML = "";
 
@@ -36,6 +40,9 @@ const tasksList = document.getElementById("tasks-list");
 const openTaskFormButton = document.getElementById("open-task-form");
 
 function clearProjectTasks() {
+  projectsList.childNodes.forEach((projectItem) => {
+    projectItem.classList.remove("selected");
+  });
   tasksList.innerHTML = "";
   openTaskFormButton.style.display = "none";
 }
@@ -115,6 +122,9 @@ function renderDetailedProjectTask(task) {
 closeTaskDetailsButton.addEventListener("click", closeTaskDetails);
 
 export default function initializeDisplayController() {
+  subscribe("highlight-selected-project", (projectIndex) => {
+    highlightSelectedProject(projectIndex);
+  });
   subscribe("render-projects", (projects) => {
     renderProjects(projects);
   });

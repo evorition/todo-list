@@ -42,7 +42,7 @@ function clearProjectTasks() {
 
 function renderProjectTasks(tasks) {
   clearProjectTasks();
-  openTaskFormButton.style.display = "block";
+  openTaskFormButton.style.display = "flex";
 
   tasks.forEach((task) => {
     const taskItem = document.createElement("li");

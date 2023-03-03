@@ -7,39 +7,31 @@ import {
 } from "./projectsHandler";
 
 function projectDynamicListeners() {
-  const projectNames = document.querySelectorAll(".project-name");
-  const projectDeleteButtons = document.querySelectorAll(".delete-project");
+  const projectItems = document.querySelectorAll(".project-item");
 
-  projectNames.forEach((projectName, projectIndex) => {
-    projectName.addEventListener("click", () => {
-      selectProject(projectIndex);
-    });
-  });
-  projectDeleteButtons.forEach((projectDeleteButton, projectIndex) => {
-    projectDeleteButton.addEventListener("click", () => {
-      removeProject(projectIndex);
+  projectItems.forEach((projectItem, projectIndex) => {
+    projectItem.addEventListener("click", (event) => {
+      if (event.target.classList.contains("delete-project")) {
+        removeProject(projectIndex);
+      } else {
+        selectProject(projectIndex);
+      }
     });
   });
 }
 
 function taskDynamicListeners() {
-  const tasksDetailsButton = document.querySelectorAll(".task-details");
-  const completeTaskCheckBoxes = document.querySelectorAll(".complete-task");
-  const editTaskButtons = document.querySelectorAll(".edit-task");
+  const taskItems = document.querySelectorAll(".task-item");
 
-  tasksDetailsButton.forEach((taskDetailsButton, taskIndex) => {
-    taskDetailsButton.addEventListener("click", () => {
-      expandTask(taskIndex);
-    });
-  });
-  completeTaskCheckBoxes.forEach((completeTaskCheckBox, taskIndex) => {
-    completeTaskCheckBox.addEventListener("change", () => {
-      removeTask(taskIndex);
-    });
-  });
-  editTaskButtons.forEach((editTaskButton, taskIndex) => {
-    editTaskButton.addEventListener("click", () => {
-      publish("open-task-form", taskIndex);
+  taskItems.forEach((taskItem, taskIndex) => {
+    taskItem.addEventListener("click", (event) => {
+      if (event.target.classList.contains("complete-task")) {
+        removeTask(taskIndex);
+      } else if (event.target.classList.contains("edit-task")) {
+        publish("open-task-form", taskIndex);
+      } else {
+        expandTask(taskIndex);
+      }
     });
   });
 }

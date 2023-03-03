@@ -50,14 +50,18 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 8px;
+  border-radius: 4px;
 }
 
-.project-item:hover,
 #open-project-form:hover,
+.project-item:hover,
 .task-item:hover {
   background-color: rgb(238, 238, 238);
-  border-radius: 4px;
   cursor: pointer;
+}
+
+.selected {
+  background-color: rgb(238, 238, 238);
 }
 
 /* Project form */

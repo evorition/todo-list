@@ -62,12 +62,12 @@
       <p id="task-due-date"></p>
       <p id="task-priority"></p>
     </div>
-    <header>To Do list</header>
     <div id="main">
+      <header><span>To Do list</span></header>
       <nav>
         <ul id="projects-list"></ul>
         <div id="open-project-form">
-          <em>Click to add new project</em>
+          <em>Add new project</em>
         </div>
         <div id="project-form-container">
           <form id="project-form" action="" method="post">
@@ -80,13 +80,17 @@
               required
             />
           </form>
-          <button type="submit" form="project-form" value="submit">Add</button>
-          <button id="close-project-form">Cancel</button>
+          <div id="project-form-buttons">
+            <button type="submit" form="project-form" value="submit">
+              Add
+            </button>
+            <button id="close-project-form">Cancel</button>
+          </div>
         </div>
       </nav>
       <main>
         <ul id="tasks-list"></ul>
-        <div id="open-task-form">Open task form</div>
+        <div id="open-task-form"><span>Open task form</span></div>
       </main>
     </div>
   </body>

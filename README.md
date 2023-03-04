@@ -8,8 +8,8 @@ Try it live [here](https://evorition.github.io/todo-list/).
 
 ---
 
-This little application has the following features:
-
-- Create separate projects and save todos in it.
-- Show todos details, mark them as completed, edit.
-- All todos and projects are saved in localStorage.
+This todo list has the very basic set of features. You can:
+- Create, delete and switch between projects.
+- Store tasks inside each project.
+- Create, edit, mark as completed or view tasks in details.
+- Have your projects and tasks saved even after you close the browser all thanks to localStorage.

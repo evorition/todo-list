@@ -81,8 +81,8 @@ function renderProjectTasks(tasks) {
 
     taskDetails.classList.add("task-details");
 
-    editTaskButton.classList.add("edit-task");
-    editTaskButton.textContent = "Edit";
+    editTaskButton.classList.add("material-symbols-rounded", "edit-task");
+    editTaskButton.textContent = "edit_note";
 
     taskTitle.textContent = task.title;
     taskDueDate.textContent = task.dueDate;
@@ -100,12 +100,15 @@ function renderProjectTasks(tasks) {
 
 const taskDetails = document.getElementById("task-details");
 const closeTaskDetailsButton = document.getElementById("close-task-details");
+const taskBackground = document.getElementById("bg");
 
 function closeTaskDetails() {
+  taskBackground.style.display = "none";
   taskDetails.style.display = "none";
 }
 
 function renderDetailedProjectTask(task) {
+  taskBackground.style.display = "block";
   taskDetails.style.display = "block";
 
   const taskTitle = document.getElementById("task-title");

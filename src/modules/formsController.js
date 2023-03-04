@@ -56,6 +56,7 @@ const taskTitle = document.getElementById("title");
 const taskDescription = document.getElementById("description");
 const taskDueDate = document.getElementById("due-date");
 const taskPriority = document.getElementById("priority");
+const taskBackground = document.getElementById("bg");
 
 function openTaskForm(taskIndex = null) {
   if (taskIndex !== null) {
@@ -73,6 +74,7 @@ function openTaskForm(taskIndex = null) {
   } else {
     submitTaskButton.textContent = "Submit";
   }
+  taskBackground.style.display = "block";
   taskForm.style.display = "block";
 }
 
@@ -86,12 +88,13 @@ function resetTaskForm() {
 
 function closeTaskForm() {
   resetTaskForm();
+  taskBackground.style.display = "none";
   taskForm.style.display = "none";
 }
 
 function validateTaskForm() {
   if (!taskTitle.value.trim().length) {
-    taskTitle.setCustomValidity("Project name can't be empty.");
+    taskTitle.setCustomValidity("Task name can't be empty.");
     taskTitle.reportValidity();
   } else {
     taskTitle.setCustomValidity("");

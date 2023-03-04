@@ -29,6 +29,7 @@ function validateProjectForm() {
     projectName.reportValidity();
   } else {
     projectName.setCustomValidity("");
+    projectName.dispatchEvent(new Event("input", { bubbles: true }));
   }
 }
 
@@ -94,6 +95,7 @@ function validateTaskForm() {
     taskTitle.reportValidity();
   } else {
     taskTitle.setCustomValidity("");
+    taskTitle.dispatchEvent(new Event("input", { bubbles: true }));
   }
 }
 

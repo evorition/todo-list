@@ -1,6 +1,6 @@
 # todo-list
 
-[alt text](https://raw.githubusercontent.com/evorition/todo-list/master/img.png "Todo list")
+![alt text](https://raw.githubusercontent.com/evorition/todo-list/master/img.png "Todo list")
 
 This is a solution to the todo-list [project](https://www.theodinproject.com/lessons/node-path-javascript-todo-list) from The Odin Project.
 

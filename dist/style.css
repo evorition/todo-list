@@ -28,6 +28,15 @@ header {
   padding-left: 16px;
 }
 
+textarea {
+  resize: none;
+  height: 128px;
+}
+
+label {
+  display: block;
+}
+
 button {
   height: 32px;
   border: none;
@@ -197,12 +206,7 @@ main {
   cursor: pointer;
 }
 
-/* Task form */
-#open-task-form:hover {
-  background-color: rgba(150, 150, 150, 0.2);
-}
-
-#task-form-container {
+.modal-task-container {
   display: none;
   position: absolute;
   left: 50%;
@@ -215,26 +219,27 @@ main {
   border-radius: 4px;
 }
 
-#close-task-form {
-  padding: 2px;
-}
-
-#close-task-form:hover {
-  background-color: rgb(238, 238, 238);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-#task-form-header {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 8px;
-}
-
-#task-form {
+.modal-task-inner {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.modal-task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.modal-close-task {
+  padding: 2px;
+}
+
+.modal-close-task:hover {
+  background-color: rgb(238, 238, 238);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .row {
@@ -242,10 +247,7 @@ main {
   justify-content: space-between;
 }
 
-label {
-  display: block;
-}
-
+/* Task form (edit, add) */
 #submit-task-button {
   align-self: flex-end;
 }
@@ -253,11 +255,6 @@ label {
 #task-form input[type="text"],
 textarea {
   width: 50%;
-}
-
-textarea {
-  resize: none;
-  height: 128px;
 }
 
 #task-form input[type="date"],
@@ -270,12 +267,9 @@ select {
   text-align: center;
 }
 
-/* task details */
-#task-details {
-  display: none;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  transform: translate(-50%, -50%);
+/* Task details */
+#task-description {
+  width: 50%;
+  max-height: 128px;
+  overflow-y: auto;
 }

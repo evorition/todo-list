@@ -14,14 +14,16 @@
   </head>
   <body>
     <div id="bg">
-      <div id="task-form-container">
-        <div id="task-form-header">
+      <div id="task-form-container" class="modal-task-container">
+        <div id="task-form-header" class="modal-task-header">
           <h3 id="task-form-title">Add new task</h3>
-          <span id="close-task-form" class="material-symbols-rounded"
+          <span
+            id="close-task-form"
+            class="material-symbols-rounded modal-close-task"
             >close</span
           >
         </div>
-        <form id="task-form" action="" method="post">
+        <form id="task-form" class="modal-task-inner" action="" method="post">
           <div class="row">
             <label for="title">Title</label>
             <input
@@ -56,16 +58,30 @@
           <button id="submit-task-button" type="submit">Submit</button>
         </form>
       </div>
-      <div id="task-details">
-        <div id="task-details-header">
-          <h1 id="task-title"></h1>
-          <span id="close-task-details" class="material-symbols-rounded"
+
+      <div id="task-details" class="modal-task-container">
+        <div id="task-details-header" class="modal-task-header">
+          <h2 id="task-title"></h2>
+          <span
+            id="close-task-details"
+            class="material-symbols-rounded modal-close-task"
             >close</span
           >
         </div>
-        <p id="task-description"></p>
-        <p id="task-due-date"></p>
-        <p id="task-priority"></p>
+        <div class="modal-task-inner">
+          <div class="row">
+            <h4>Description:</h4>
+            <p id="task-description"></p>
+          </div>
+          <div class="row">
+            <h4>Due date:</h4>
+            <p id="task-due-date"></p>
+          </div>
+          <div class="row">
+            <h4>Priority:</h4>
+            <p id="task-priority"></p>
+          </div>
+        </div>
       </div>
     </div>
     <div id="main">
@@ -97,7 +113,7 @@
       </nav>
       <main>
         <ul id="tasks-list"></ul>
-        <div id="open-task-form"><span>Open task form</span></div>
+        <div id="open-task-form"><span>Add new task</span></div>
       </main>
     </div>
   </body>
